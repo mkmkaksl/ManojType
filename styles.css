@@ -1,0 +1,55 @@
+body {
+    background: lightcyan;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#typeText {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.typeChar {
+    font-size: 1.3rem;
+    padding: 0.5em;
+    margin: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0.7em;
+    aspect-ratio: 1/ 2;
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.3);
+}
+.typeChar.active {
+    background: yellow;
+}
+
+.metric {
+    font-size: 1.1rem;
+    font-variant: small-caps;
+    padding: 0.5em;
+    border-radius: 15px;
+    border: 1px solid gray;
+    background: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em;
+}
