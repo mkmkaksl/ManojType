@@ -1,9 +1,14 @@
+
+let allAudio;  
 document.addEventListener("DOMContentLoaded", async () => {
+
+    allAudio = document.querySelectorAll("audio");
+    
     // Create Typing text spans
     let text = "";
     let alphabet = "a ";
     // let textSize = Math.floor(Math.random() * 5) + 5;
-    let textSize = 10;
+    let textSize = 100;
     let wordList = await getFile();
     for (let i = 0; i < textSize; i++) {
         text += wordList[Math.floor(Math.random() * wordList.length)];
@@ -44,6 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     allChars[curActive].classList.add("active");
 
     document.addEventListener("keydown", (event) => {
+        event.preventDefault();
         if (!finished) {
             if (curActive == 0) {
                 seconds = 0.01
@@ -67,8 +73,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             }
             else if (allowed.indexOf(key) != -1) {
+
+                // audio.play();
+                // clearInterval(curInterval)
+                // curInterval = setInterval(() => {
+                //     audio.pause();
+                // }, 100);
+
+                // fetch("http://localhost:3001/music")
+                //     .then(response => response.json())
+                //     .then(data => console.log(data))
+                //     .catch(err => console.error(err))
+                let curAud = getRandomAudio();
+                curAud.currentTime = 0;
+                curAud.play();
+
                 key = key == " " ? "" : key;
-                allChars[curActive].style.color = "blue";
+                allChars[curActive].style.color = "black";
                 if (key === allChars[curActive].innerText) {
                     allChars[curActive].style.backgroundColor = "lightgreen";
                     numCorrect++;
@@ -113,4 +134,10 @@ function getFile() {
             return wordList;
         })
         .catch((e) => console.error(e));
+}
+
+function getRandomAudio() {
+    let randomIdx = Math.floor(Math.random() * (allAudio.length-1));
+    console.log(randomIdx);
+    return allAudio[randomIdx];
 }
